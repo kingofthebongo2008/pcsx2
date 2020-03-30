@@ -1,3 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
-</Project> 
+
+<ItemGroup> 
+<ClInclude Include = "..\src\App.h">   
+      <DependentUpon>..\src\App.xaml</DependentUpon>
+</ClInclude>
+<ClInclude Include = "..\src\MainPage.h">  
+      <DependentUpon>..\src\MainPage.xaml</DependentUpon>
+</ClInclude>
+
+<ClInclude Include = "..\src\pch\pch.h"/>   
+<ClInclude Include = "..\src\pch\targetver.h"/>
+</ItemGroup></Project> 
