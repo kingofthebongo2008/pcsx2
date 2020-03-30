@@ -71,10 +71,6 @@ public:
 
         m_core_window           = window;
         m_display_information   = currentDisplayInformation;
-        
-        m_renderer  = std::make_unique<uc::uwp::renderer>(&m_windowClosed, window, m_display_information );
-        m_renderer->set_display_info(m_display_information);
-        m_renderer->refresh_display_layout();
     }
 
     virtual void Load( winrt::hstring)
@@ -85,9 +81,7 @@ public:
     virtual void Run()
     {
         //show splash screen here
-        auto initialize = m_renderer->initialize_async();
-
-        while (!m_windowClosed && !initialize.is_done() )
+        while (!m_windowClosed)
         {
             CoreWindow::GetForCurrentThread().Dispatcher().ProcessEvents(CoreProcessEventsOption::ProcessAllIfPresent);
         }
@@ -95,21 +89,6 @@ public:
         if (m_windowClosed)
         {
             return;
-        }
-
-        if (!m_renderer_thread)
-        {
-            //split the event processing and the rendering
-            m_renderer_thread = std::make_unique<std::thread>([this]()
-            {
-                while (!m_windowClosed)
-                {
-                    m_renderer->pre_render();
-                    m_renderer->update();
-                    m_renderer->render();
-                    m_renderer->present();
-                }
-            });
         }
 
         while (!m_windowClosed)
@@ -223,7 +202,6 @@ private:
 #pragma warning( disable:4447 )
 int32_t __stdcall wWinMain(HINSTANCE, HINSTANCE, PWSTR, int32_t)
 {
-    uc::os::windows::com_initializer initializer;
     //auto viewProviderFactory = ref new ViewProviderFactory();
     CoreApplication::Run(ViewProvider());
     return 0;
