@@ -1,0 +1,77 @@
+﻿<Page
+    x:Class="App2.ControlPanelPage"
+    
+
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App2"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    d:DesignWidth="1620" d:DesignHeight ="920"
+>
+    <SplitView
+           DisplayMode="CompactInline" IsPaneOpen="True"
+            
+             >
+
+        <SplitView.Content>
+
+            <TextBlock Text="DirectX 12"
+                   FontSize="24"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right" Margin="0,0,595,0"/>
+
+        </SplitView.Content>
+
+        <SplitView.Pane>
+
+            <muxc:NavigationView
+            x:Name="nvSample"
+            IsBackButtonVisible="Auto"
+            IsBackEnabled="True"
+            AlwaysShowHeader="False"
+            PaneDisplayMode="Left" 
+            SelectionFollowsFocus="Enabled" 
+            IsPaneToggleButtonVisible ="False"
+            
+            
+            IsTabStop="True" BackRequested="nvSample_BackRequested">
+
+                <muxc:NavigationView.MenuItems>
+                    <muxc:NavigationViewItem Content="Game" Tag="Game" x:Name="Game" SelectsOnInvoked="True">
+                        <muxc:NavigationViewItem.Icon>
+                            <BitmapIcon UriSource="ms-appx:///Assets/designs-88x88.png"/>
+                        </muxc:NavigationViewItem.Icon>
+                    </muxc:NavigationViewItem>
+
+                    <muxc:NavigationViewItem Content="Graphic" Tag="Graphic" x:Name="Graphic" SelectsOnInvoked="True">
+                        <muxc:NavigationViewItem.Icon>
+                            <BitmapIcon UriSource="ms-appx:///Assets/designs-88x88.png"/>
+                        </muxc:NavigationViewItem.Icon>
+                    </muxc:NavigationViewItem>
+
+                    <muxc:NavigationViewItem Content="Joystick" Tag="Joystick" x:Name="Joystick" SelectsOnInvoked="True">
+                        <muxc:NavigationViewItem.Icon>
+                            <BitmapIcon UriSource="ms-appx:///Assets/designs-88x88.png"/>
+                        </muxc:NavigationViewItem.Icon>
+                    </muxc:NavigationViewItem>
+
+                    <muxc:NavigationViewItem Content="Spu2" Tag="Spu2" x:Name="Spu2" SelectsOnInvoked="True">
+                        <muxc:NavigationViewItem.Icon>
+                            <BitmapIcon UriSource="ms-appx:///Assets/designs-88x88.png"/>
+                        </muxc:NavigationViewItem.Icon>
+                    </muxc:NavigationViewItem>
+
+                </muxc:NavigationView.MenuItems>
+            </muxc:NavigationView>
+
+
+        </SplitView.Pane>
+
+
+    </SplitView>
+
+
+</Page>
